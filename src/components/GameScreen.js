@@ -11,7 +11,7 @@ const GameScreen = ({ onLeaveGame }) => {
   const location = useLocation();
   const playerName = localStorage.getItem('playerName');
   const [board, setBoard] = useState(createEmptyBoard());
-  const [currentPlayer, setCurrentPlayer] = useState('Player 1');
+  const [currentPlayer, setCurrentPlayer] = useState(playerName);
   const [winner, setWinner] = useState(null);
   const [player1Color, setPlayer1Color] = useState('#ff0000'); // Default color: red
   const [player2Color, setPlayer2Color] = useState('#00ff00'); // Default color: green
@@ -45,14 +45,14 @@ const GameScreen = ({ onLeaveGame }) => {
           if (player) {
             // Dikey kontrol
             if (row + 3 < 6 && board[row + 1][col] === player && board[row + 2][col] === player && board[row + 3][col] === player) {
-              setWinner(`${player} wins!`);
+              setWinner(`${player === 'R' ? 'Player 1' : 'Player 2'} wins!`);
               return;
             }
 
             // Yatay kontrol
             if (col + 3 < 7) {
               if (board[row][col + 1] === player && board[row][col + 2] === player && board[row][col + 3] === player) {
-                setWinner(`${player} wins!`);
+                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
                 return;
               }
             }
@@ -60,7 +60,7 @@ const GameScreen = ({ onLeaveGame }) => {
             // Çapraz kontrol (sol üstten sağ alta)
             if (row + 3 < 6 && col + 3 < 7) {
               if (board[row + 1][col + 1] === player && board[row + 2][col + 2] === player && board[row + 3][col + 3] === player) {
-                setWinner(`${player} wins!`);
+                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
                 return;
               }
             }
@@ -68,7 +68,7 @@ const GameScreen = ({ onLeaveGame }) => {
             // Çapraz kontrol (sol alttan sağ üste)
             if (row - 3 >= 0 && col + 3 < 7) {
               if (board[row - 1][col + 1] === player && board[row - 2][col + 2] === player && board[row - 3][col + 3] === player) {
-                setWinner(`${player} wins!`);
+                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
                 return;
               }
             }
@@ -82,13 +82,13 @@ const GameScreen = ({ onLeaveGame }) => {
         // Berabere kalındığında oyunu sıfırla
         resetGame();
       }
-    };
+    };  
 
     // Oyun durumunu kontrol et
     checkGameStatus();
 
-    // Bilgisayarın hamlesini yap
-    if (currentPlayer === 'Player 2' && isComputersTurn) {
+    // Bilgisayarın hamlesini yap sadece eğer kazanan yoksa ve sıra Player 2'deyse
+    if (!winner && currentPlayer === 'Computer' && isComputersTurn) {
       makeRandomMove();
     }
   }, [board, winner, currentPlayer, isComputersTurn]);
@@ -102,10 +102,10 @@ const GameScreen = ({ onLeaveGame }) => {
     for (let row = 5; row >= 0; row--) {
       if (!board[row][column]) {
         const newBoard = [...board];
-        newBoard[row][column] = currentPlayer === 'Player 1' ? 'R' : 'Y';
+        newBoard[row][column] = currentPlayer === playerName? 'R' : 'Y';
         setBoard(newBoard);
 
-        setCurrentPlayer(currentPlayer === 'Player 1' ? 'Player 2' : 'Player 1');
+        setCurrentPlayer(currentPlayer === playerName ? 'Computer' : playerName);
         setIsComputersTurn(true); // Bilgisayarın sırasını beklet
         break;
       }
@@ -158,7 +158,7 @@ const GameScreen = ({ onLeaveGame }) => {
   const resetGame = () => {
     // Oyunu sıfırla ve yeni bir oyun başlat
     setBoard(createEmptyBoard());
-    setCurrentPlayer('Player 1');
+    setCurrentPlayer(currentPlayer === playerName ? 'Computer' : playerName);
     setWinner(null);
   };
 
