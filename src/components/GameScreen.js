@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/GameScreen.css'; // CSS dosyasını dahil et
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const createEmptyBoard = () => {
   const board = Array.from({ length: 6 }, () => Array(7).fill(null));
@@ -9,7 +9,7 @@ const createEmptyBoard = () => {
 
 const GameScreen = ({ onLeaveGame }) => {
   const location = useLocation();
-  const playerName = localStorage.getItem("playerName");
+  const playerName = localStorage.getItem('playerName');
   const [board, setBoard] = useState(createEmptyBoard());
   const [currentPlayer, setCurrentPlayer] = useState('Player 1');
   const [winner, setWinner] = useState(null);
@@ -17,13 +17,13 @@ const GameScreen = ({ onLeaveGame }) => {
   const [player2Color, setPlayer2Color] = useState('#00ff00'); // Default color: green
   const [isComputersTurn, setIsComputersTurn] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem('backgroundColor'));
-
+  const gameInfoArray = JSON.parse(localStorage.getItem('gameInfoArray')) || [];
 
   useEffect(() => {
     // Sayfa açıldığında local storage'dan renk bilgilerini al
     const storedPlayer1Color = localStorage.getItem('player1Color') || '#ff0000';
     const storedPlayer2Color = localStorage.getItem('player2Color') || '#00ff00';
-    const storedBackgroundColor = localStorage.getItem("backgroundColor");
+    const storedBackgroundColor = localStorage.getItem('backgroundColor');
 
     setPlayer1Color(storedPlayer1Color);
     setPlayer2Color(storedPlayer2Color);
@@ -33,6 +33,7 @@ const GameScreen = ({ onLeaveGame }) => {
   useEffect(() => {
     if (winner) {
       // Kazanan bir kez belirlendikten sonra oyunu durdur
+      saveGameInfo(); // Kazanan bilgilerini local storage'a kaydet
       return;
     }
 
@@ -132,7 +133,7 @@ const GameScreen = ({ onLeaveGame }) => {
 
   const renderBoard = () => {
     return (
-      <div className='board' style={{backgroundColor: backgroundColor}}>
+      <div className='board' style={{ backgroundColor: backgroundColor }}>
         {board[0].map((_, columnIndex) => (
           <div key={columnIndex} className="column">
             {board.map((row, rowIndex) => (
@@ -153,7 +154,7 @@ const GameScreen = ({ onLeaveGame }) => {
       </div>
     );
   };
-  
+
   const resetGame = () => {
     // Oyunu sıfırla ve yeni bir oyun başlat
     setBoard(createEmptyBoard());
@@ -161,16 +162,32 @@ const GameScreen = ({ onLeaveGame }) => {
     setWinner(null);
   };
 
+  const saveGameInfo = () => {
+    // Kazanan bilgilerini local storage'a kaydet
+    const gameInfo = {
+      winner: winner,
+      playerName: playerName,
+      gameName: 'Connect Four', // Oyun adını istediğiniz şekilde ayarlayabilirsiniz
+    };
+
+    gameInfoArray.push(gameInfo);
+    localStorage.setItem('gameInfoArray', JSON.stringify(gameInfoArray));
+  };
+
   return (
-    <div className="game-container" >
+    <div className="game-container">
       <h2>Connect Four Game</h2>
       <p>Welcome, {playerName}!</p>
+      <div>
+        <Link to="/history">Game History</Link>
+      </div>
       {renderBoard()}
 
       {winner ? (
         <div>
           <p className="winner-text">Winner: {winner}</p>
-        
+          {/* Yeni: Oyun bilgilerini listeleyen bir bağlantı */}
+          <Link to="/history">View Game History</Link>
         </div>
       ) : (
         <p className="current-player-text">Current Player: {currentPlayer}</p>

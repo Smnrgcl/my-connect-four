@@ -30,7 +30,7 @@ const App = () => {
           element={<GameScreen onLeaveGame={leaveGameHandler} />}
         />
 
-        <Route path="/list" element={<ListOfGamesScreen />} />
+        <Route path="/history" element={<ListOfGamesScreen />} />
       </Routes>
     </Router>
   );
