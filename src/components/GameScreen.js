@@ -107,7 +107,8 @@ const GameScreen = ({ onLeaveGame }) => {
         newBoard[row][column] = currentPlayer === playerName? 'R' : 'Y';
 
         setCurrentPlayer(currentPlayer === playerName ? 'Computer' : playerName);
-     
+        console.log(checkGameStatus(newBoard));
+        console.log("check");
         setIsComputersTurn(true); // Bilgisayarın sırasını beklet
         setBoard(newBoard);
 
@@ -182,7 +183,12 @@ const GameScreen = ({ onLeaveGame }) => {
   return (
     <div className="game-container">
 
-     
+      <button hidden onClick={() => {
+        setIsComputersTurn(true)
+      }}>true</button>
+       <button hidden onClick={() => {
+        setIsComputersTurn(false)
+      }}>false</button>
       <h2>Connect Four Game</h2>
       <p>Welcome, {playerName}!</p>
       <div>
