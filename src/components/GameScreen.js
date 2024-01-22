@@ -182,12 +182,7 @@ const GameScreen = ({ onLeaveGame }) => {
   return (
     <div className="game-container">
 
-      <button onClick={() => {
-        setIsComputersTurn(true)
-      }}>true</button>
-       <button onClick={() => {
-        setIsComputersTurn(false)
-      }}>false</button>
+     
       <h2>Connect Four Game</h2>
       <p>Welcome, {playerName}!</p>
       <div>
