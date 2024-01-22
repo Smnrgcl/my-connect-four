@@ -30,6 +30,53 @@ const GameScreen = ({ onLeaveGame }) => {
     setBackgroundColor(storedBackgroundColor);
   }, []);
 
+
+  const checkGameStatus = (newBoard=board) => {
+    // Dikey, yatay ve çapraz yönlere kazanan kontrolü yapılabilir
+    for (let row = 0; row < 6; row++) {
+      for (let col = 0; col < 7; col++) {
+        const player = newBoard[row][col];
+        if (player) {
+          // Dikey kontrol
+          if (row + 3 < 6 && newBoard[row + 1][col] === player && newBoard[row + 2][col] === player && newBoard[row + 3][col] === player) {
+            setWinner(`${player === 'R' ? playerName : 'Player 2'} wins!`);
+            return;
+          }
+
+          // Yatay kontrol
+          if (col + 3 < 7) {
+            if (newBoard[row][col + 1] === player && newBoard[row][col + 2] === player && newBoard[row][col + 3] === player) {
+              setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
+              return;
+            }
+          }
+
+          // Çapraz kontrol (sol üstten sağ alta)
+          if (row + 3 < 6 && col + 3 < 7) {
+            if (newBoard[row + 1][col + 1] === player && newBoard[row + 2][col + 2] === player && newBoard[row + 3][col + 3] === player) {
+              setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
+              return;
+            }
+          }
+
+          // Çapraz kontrol (sol alttan sağ üste)
+          if (row - 3 >= 0 && col + 3 < 7) {
+            if (newBoard[row - 1][col + 1] === player && newBoard[row - 2][col + 2] === player && newBoard[row - 3][col + 3] === player) {
+              setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
+              return;
+            }
+          }
+        }
+      }
+    }
+
+    // Oyun berabere mi bitmiş kontrolü (tüm hücreler doluysa)
+    if (newBoard.every(row => row.every(cell => cell !== null))) {
+      setWinner('The game is a draw!');
+      // Berabere kalındığında oyunu sıfırla
+      resetGame();
+    }
+  };  
   useEffect(() => {
     if (winner) {
       // Kazanan bir kez belirlendikten sonra oyunu durdur
@@ -37,52 +84,7 @@ const GameScreen = ({ onLeaveGame }) => {
       return;
     }
 
-    const checkGameStatus = () => {
-      // Dikey, yatay ve çapraz yönlere kazanan kontrolü yapılabilir
-      for (let row = 0; row < 6; row++) {
-        for (let col = 0; col < 7; col++) {
-          const player = board[row][col];
-          if (player) {
-            // Dikey kontrol
-            if (row + 3 < 6 && board[row + 1][col] === player && board[row + 2][col] === player && board[row + 3][col] === player) {
-              setWinner(`${player === 'R' ? playerName : 'Player 2'} wins!`);
-              return;
-            }
-
-            // Yatay kontrol
-            if (col + 3 < 7) {
-              if (board[row][col + 1] === player && board[row][col + 2] === player && board[row][col + 3] === player) {
-                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
-                return;
-              }
-            }
-
-            // Çapraz kontrol (sol üstten sağ alta)
-            if (row + 3 < 6 && col + 3 < 7) {
-              if (board[row + 1][col + 1] === player && board[row + 2][col + 2] === player && board[row + 3][col + 3] === player) {
-                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
-                return;
-              }
-            }
-
-            // Çapraz kontrol (sol alttan sağ üste)
-            if (row - 3 >= 0 && col + 3 < 7) {
-              if (board[row - 1][col + 1] === player && board[row - 2][col + 2] === player && board[row - 3][col + 3] === player) {
-                setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
-                return;
-              }
-            }
-          }
-        }
-      }
-
-      // Oyun berabere mi bitmiş kontrolü (tüm hücreler doluysa)
-      if (board.every(row => row.every(cell => cell !== null))) {
-        setWinner('The game is a draw!');
-        // Berabere kalındığında oyunu sıfırla
-        resetGame();
-      }
-    };  
+    
 
     // Oyun durumunu kontrol et
     checkGameStatus();
@@ -103,10 +105,12 @@ const GameScreen = ({ onLeaveGame }) => {
       if (!board[row][column]) {
         const newBoard = [...board];
         newBoard[row][column] = currentPlayer === playerName? 'R' : 'Y';
-        setBoard(newBoard);
 
         setCurrentPlayer(currentPlayer === playerName ? 'Computer' : playerName);
+     
         setIsComputersTurn(true); // Bilgisayarın sırasını beklet
+        setBoard(newBoard);
+
         break;
       }
     }
@@ -120,8 +124,8 @@ const GameScreen = ({ onLeaveGame }) => {
         availableColumns.push(col);
       }
     }
-
-    if (availableColumns.length > 0) {
+  
+    if (availableColumns.length > 0 && currentPlayer === 'Computer' && !winner && isComputersTurn) {
       const randomColumn = availableColumns[Math.floor(Math.random() * availableColumns.length)];
       const timer = setTimeout(() => {
         dropDisk(randomColumn);
@@ -130,6 +134,7 @@ const GameScreen = ({ onLeaveGame }) => {
       }, 1000); // 1 saniye bekletme süresi (istediğiniz süreyi ayarlayabilirsiniz)
     }
   };
+  
 
   const renderBoard = () => {
     return (
@@ -176,6 +181,13 @@ const GameScreen = ({ onLeaveGame }) => {
 
   return (
     <div className="game-container">
+
+      <button onClick={() => {
+        setIsComputersTurn(true)
+      }}>true</button>
+       <button onClick={() => {
+        setIsComputersTurn(false)
+      }}>false</button>
       <h2>Connect Four Game</h2>
       <p>Welcome, {playerName}!</p>
       <div>
