@@ -45,7 +45,7 @@ const GameScreen = ({ onLeaveGame }) => {
           if (player) {
             // Dikey kontrol
             if (row + 3 < 6 && board[row + 1][col] === player && board[row + 2][col] === player && board[row + 3][col] === player) {
-              setWinner(`${player === 'R' ? 'Player 1' : 'Player 2'} wins!`);
+              setWinner(`${player === 'R' ? playerName : 'Player 2'} wins!`);
               return;
             }
 
