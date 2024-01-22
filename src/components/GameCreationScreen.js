@@ -6,13 +6,17 @@ const GameCreationScreen = ({ onStartGame }) => {
   const [player1Color, setPlayer1Color] = useState(localStorage.getItem('player1Color') || '#ff0000');
   const [player2Color, setPlayer2Color] = useState(localStorage.getItem('player2Color') || '#00ff00');
   const [gameName, setGameName] = useState(localStorage.getItem('gameName') || '');
-  const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem('backgroundColor') || '#ffffff');
+  const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem('backgroundColor'));
 
   const navigate = useNavigate();
 
   const handleStartGame = () => {
-    // Oyun başlatıldığında, yönlendirme işlemini gerçekleştir
-    onStartGame(playerName, player1Color, player2Color);
+     // Oyuncu ismi boşsa, geçiş yapma
+     if (!playerName) {
+      alert('Please enter your player name.');
+      return;
+    }// Oyun başlatıldığında, yönlendirme işlemini gerçekleştir
+    onStartGame(playerName, player1Color, player2Color, backgroundColor);
 
     // Local storage'e değerleri kaydet
     localStorage.setItem('playerName', playerName);
@@ -22,7 +26,7 @@ const GameCreationScreen = ({ onStartGame }) => {
     localStorage.setItem('backgroundColor', backgroundColor);
 
     // Örneğin, '/game' sayfasına yönlendir
-    navigate('/game', { playerName, player1Color, player2Color });
+    navigate('/game', { playerName, player1Color, player2Color,backgroundColor });
   };
 
   useEffect(() => {

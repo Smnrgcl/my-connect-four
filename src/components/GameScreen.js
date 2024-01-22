@@ -15,14 +15,19 @@ const GameScreen = ({ onLeaveGame }) => {
   const [winner, setWinner] = useState(null);
   const [player1Color, setPlayer1Color] = useState('#ff0000'); // Default color: red
   const [player2Color, setPlayer2Color] = useState('#00ff00'); // Default color: green
+  const [isComputersTurn, setIsComputersTurn] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem('backgroundColor'));
+
 
   useEffect(() => {
     // Sayfa açıldığında local storage'dan renk bilgilerini al
     const storedPlayer1Color = localStorage.getItem('player1Color') || '#ff0000';
     const storedPlayer2Color = localStorage.getItem('player2Color') || '#00ff00';
+    const storedBackgroundColor = localStorage.getItem("backgroundColor");
 
     setPlayer1Color(storedPlayer1Color);
     setPlayer2Color(storedPlayer2Color);
+    setBackgroundColor(storedBackgroundColor);
   }, []);
 
   useEffect(() => {
@@ -80,7 +85,12 @@ const GameScreen = ({ onLeaveGame }) => {
 
     // Oyun durumunu kontrol et
     checkGameStatus();
-  }, [board, winner]);
+
+    // Bilgisayarın hamlesini yap
+    if (currentPlayer === 'Player 2' && isComputersTurn) {
+      makeRandomMove();
+    }
+  }, [board, winner, currentPlayer, isComputersTurn]);
 
   const dropDisk = (column) => {
     if (winner) {
@@ -95,13 +105,34 @@ const GameScreen = ({ onLeaveGame }) => {
         setBoard(newBoard);
 
         setCurrentPlayer(currentPlayer === 'Player 1' ? 'Player 2' : 'Player 1');
+        setIsComputersTurn(true); // Bilgisayarın sırasını beklet
         break;
       }
     }
   };
+
+  const makeRandomMove = () => {
+    // Bilgisayarın rastgele bir sütuna disk bırakması
+    const availableColumns = [];
+    for (let col = 0; col < 7; col++) {
+      if (!board[0][col]) {
+        availableColumns.push(col);
+      }
+    }
+
+    if (availableColumns.length > 0) {
+      const randomColumn = availableColumns[Math.floor(Math.random() * availableColumns.length)];
+      const timer = setTimeout(() => {
+        dropDisk(randomColumn);
+        setIsComputersTurn(false); // Bilgisayarın sırasını bitir
+        clearTimeout(timer);
+      }, 1000); // 1 saniye bekletme süresi (istediğiniz süreyi ayarlayabilirsiniz)
+    }
+  };
+
   const renderBoard = () => {
     return (
-      <div className='board'>
+      <div className='board' style={{backgroundColor: backgroundColor}}>
         {board[0].map((_, columnIndex) => (
           <div key={columnIndex} className="column">
             {board.map((row, rowIndex) => (
@@ -131,7 +162,7 @@ const GameScreen = ({ onLeaveGame }) => {
   };
 
   return (
-    <div className="game-container">
+    <div className="game-container" >
       <h2>Connect Four Game</h2>
       <p>Welcome, {playerName}!</p>
       {renderBoard()}
