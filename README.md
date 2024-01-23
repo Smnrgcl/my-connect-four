@@ -60,25 +60,5 @@ Tabii ki, işte düzeltilmiş README.md dosyanız:
 
 markdown
 Copy code
-# Connect Four Game
 
-## Project Structure
 
-MY-CONNECT-FOUR/
-├── node_modules/
-├── public/
-├── src/
-│ ├── components/
-│ │ ├── GameCreationScreen.js
-│ │ ├── ListOfGamesScreen.js
-│ │ ├── GameScreen.js
-│ ├── css/
-│ │ ├── GameScreen.css
-│ ├── App.js
-│ ├── index.js
-│ ├── setupTests.js
-│ ├── reportWebVitals.js
-├── .gitignore
-├── package-lock.json
-├── package.json
-├── README.md
