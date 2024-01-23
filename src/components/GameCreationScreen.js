@@ -45,6 +45,8 @@ const GameCreationScreen = ({ onStartGame }) => {
   }, []);
 
   const containerStyle = {
+    backgroundColor: 'rgb(173, 216, 230)',
+
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -54,9 +56,11 @@ const GameCreationScreen = ({ onStartGame }) => {
 
   return (
     <div style={containerStyle}>
+      
       <h2>Game Creation Screen</h2>
       <label>
         Game Name:
+        
         <input type="text" value={gameName} onChange={(e) => setGameName(e.target.value)} />
       </label>
       <br />

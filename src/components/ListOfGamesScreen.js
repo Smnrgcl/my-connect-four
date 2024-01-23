@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ListOfGamesScreen = () => {
+  const navigate = useNavigate();
+
   // Local storage'tan oyun bilgi dizisini al
   let gameInfoArray = JSON.parse(localStorage.getItem('gameInfoArray')) || [];
 
@@ -25,15 +28,17 @@ const ListOfGamesScreen = () => {
   const son10Oyunlar = updatedGameInfoArray.slice(0, Math.min(updatedGameInfoArray.length, 10));
 
   const containerStyle = {
+    backgroundColor: 'rgb(173, 216, 230)',
     display: 'flex',
     flexDirection: 'column', // Dikey yönde sırala
     alignItems: 'center',
+    height: '100vh'
   };
   const tableStyle = {
     width: '100%',
     borderCollapse: 'collapse',
     marginTop: '20px',
-    backgroundColor: '#B0E0E6', // Örnek bir renk kodu
+    backgroundColor: '#fff', // Örnek bir renk kodu
   };
   const thTdStyle = {
     border: '1px solid #ddd',
@@ -57,25 +62,24 @@ const ListOfGamesScreen = () => {
         <h2>Oyun Skor Tablosu</h2>
       </div>
       <div>
+        {/* GameCreationScreen sayfasına geçiş yapacak buton */}
+        <button onClick={() => navigate('/')}>GameCreationScreen</button>
+      </div>
+      <div>
         <table style={tableStyle}>
           <thead>
             <tr>
               <th style={thTdStyle}>Oyun Adı</th>
               <th style={thTdStyle}>Oyuncu Adı</th>
               <th style={thTdStyle}>Kazanan</th>
-              {/* Skor eklemek istiyorsanız, bir skor başlığı ekleyebilirsiniz */}
-              {/* <th style={thTdStyle}>Skor</th> */}
             </tr>
           </thead>
           <tbody>
-            {/* Son 10 oyunu göstermek için map fonksiyonunu kullan */
-            son10Oyunlar.map((oyunBilgisi, index) => (
+            {son10Oyunlar.map((oyunBilgisi, index) => (
               <tr key={index}>
                 <td style={thTdStyle}>{oyunBilgisi.gameName}</td>
                 <td style={thTdStyle}>{oyunBilgisi.playerName}</td>
                 <td style={thTdStyle}>{oyunBilgisi.winner}</td>
-                {/* Skor eklemek istiyorsanız, oyunBilgisi objesinden skoru alabilirsiniz */}
-                {/* <td style={thTdStyle}>{oyunBilgisi.score}</td> */}
               </tr>
             ))}
           </tbody>
