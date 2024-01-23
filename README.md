@@ -51,3 +51,34 @@ This page displays a table of game scores. It includes the following features:
 4. If the game ends in a tie, it automatically starts a new game.
 5. To view the previous and current game lists, check the Game History section.
 6. If you want to exit the game or change game information, click the Leave Game button.
+
+# Connect Four Game
+
+## Project Structure
+ 
+Tabii ki, işte düzeltilmiş README.md dosyanız:
+
+markdown
+Copy code
+# Connect Four Game
+
+## Project Structure
+
+MY-CONNECT-FOUR/
+├── node_modules/
+├── public/
+├── src/
+│ ├── components/
+│ │ ├── GameCreationScreen.js
+│ │ ├── ListOfGamesScreen.js
+│ │ ├── GameScreen.js
+│ ├── css/
+│ │ ├── GameScreen.css
+│ ├── App.js
+│ ├── index.js
+│ ├── setupTests.js
+│ ├── reportWebVitals.js
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── README.md
