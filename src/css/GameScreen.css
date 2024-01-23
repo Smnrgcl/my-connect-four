@@ -17,8 +17,8 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(7, 50px);
-  grid-template-rows: repeat(6, 50px);
+  grid-template-columns: repeat(7, 50.8px);
+  grid-template-rows: repeat(6, 48px);
   gap: 5px;
 }
 
