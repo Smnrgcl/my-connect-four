@@ -1,5 +1,25 @@
 # My Connect Four Game
 
+## Installation
+
+To set up the project on your local machine, follow the steps below:
+
+1. Download the project files to your computer.
+2. Navigate to the project directory in your terminal or command prompt.
+3. Use the following command to install the necessary dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. In the project directory, start the application by using the following command:
+
+    ```bash
+    npm start
+    ```
+
+After following these steps, your application should be up and running
+
 ## Project Description
 
 This project simulates the board game "Connect Four" in a digital format through a web application. The user interface of the game consists of three main pages: Game Creation Screen, Game Screen, and List of Games Screen.
@@ -52,13 +72,6 @@ This page displays a table of game scores. It includes the following features:
 5. To view the previous and current game lists, check the Game History section.
 6. If you want to exit the game or change game information, click the Leave Game button.
 
-# Connect Four Game
 
-## Project Structure
- 
-Tabii ki, işte düzeltilmiş README.md dosyanız:
-
-markdown
-Copy code
 
 
