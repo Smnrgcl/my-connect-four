@@ -1,19 +1,22 @@
 import React from 'react';
 
 const ListOfGamesScreen = () => {
-  // New: Retrieve the game info array from local storage
+  // Local storage'tan oyun bilgi dizisini al
   const gameInfoArray = JSON.parse(localStorage.getItem('gameInfoArray')) || [];
+
+  // Diziden son 10 oyunu al
+  const son10Oyunlar = gameInfoArray.slice(Math.max(gameInfoArray.length - 10, 0));
 
   return (
     <div>
-      <h2>List of Games</h2>
+      <h2>Oyun Listesi</h2>
       <ul>
-        {/* New: Map through the game info array to display game information */}
-        {gameInfoArray.map((gameInfo, index) => (
+        {/* Son 10 oyunu göstermek için map fonksiyonunu kullan */
+        son10Oyunlar.map((oyunBilgisi, index) => (
           <li key={index}>
-            <p>Game Name: {gameInfo.gameName}</p>
-            <p>Player Name: {gameInfo.playerName}</p>
-            <p>Winner: {gameInfo.winner}</p>
+            <p>Oyun Adı: {oyunBilgisi.gameName}</p>
+            <p>Oyuncu Adı: {oyunBilgisi.playerName}</p>
+            <p>Kazanan: {oyunBilgisi.winner}</p>
           </li>
         ))}
       </ul>

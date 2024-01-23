@@ -16,8 +16,8 @@ const GameCreationScreen = ({ onStartGame }) => {
       alert('Please enter your player name.');
       return;
     }// Oyun başlatıldığında, yönlendirme işlemini gerçekleştir
-    onStartGame(playerName, player1Color, player2Color, backgroundColor);
-
+    onStartGame(playerName, player1Color, player2Color, backgroundColor, gameName);
+     navigate('/game', { playerName, player1Color, player2Color, backgroundColor, gameName });
     // Local storage'e değerleri kaydet
     localStorage.setItem('playerName', playerName);
     localStorage.setItem('player1Color', player1Color);
@@ -26,7 +26,7 @@ const GameCreationScreen = ({ onStartGame }) => {
     localStorage.setItem('backgroundColor', backgroundColor);
 
     // Örneğin, '/game' sayfasına yönlendir
-    navigate('/game', { playerName, player1Color, player2Color,backgroundColor });
+    navigate('/game', { playerName, player1Color, player2Color,backgroundColor,gameName });
   };
 
   useEffect(() => {

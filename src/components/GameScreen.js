@@ -10,6 +10,7 @@ const createEmptyBoard = () => {
 const GameScreen = ({ onLeaveGame }) => {
   const location = useLocation();
   const playerName = localStorage.getItem('playerName');
+  const gameName = localStorage.getItem('gameName');
   const [board, setBoard] = useState(createEmptyBoard());
   const [currentPlayer, setCurrentPlayer] = useState(playerName);
   const [winner, setWinner] = useState(null);
@@ -39,7 +40,7 @@ const GameScreen = ({ onLeaveGame }) => {
         if (player) {
           // Dikey kontrol
           if (row + 3 < 6 && newBoard[row + 1][col] === player && newBoard[row + 2][col] === player && newBoard[row + 3][col] === player) {
-            setWinner(`${player === 'R' ? playerName : 'Player 2'} wins!`);
+            setWinner(`${player === 'R' ? playerName : 'Computer'} wins!`);
             return;
           }
 
@@ -173,7 +174,7 @@ const GameScreen = ({ onLeaveGame }) => {
     const gameInfo = {
       winner: winner,
       playerName: playerName,
-      gameName: 'Connect Four', // Oyun adını istediğiniz şekilde ayarlayabilirsiniz
+      gameName: gameName, // Oyun adını istediğiniz şekilde ayarlayabilirsiniz
     };
 
     gameInfoArray.push(gameInfo);
@@ -200,7 +201,7 @@ const GameScreen = ({ onLeaveGame }) => {
         <div>
           <p className="winner-text">Winner: {winner}</p>
           {/* Yeni: Oyun bilgilerini listeleyen bir bağlantı */}
-          <Link to="/history">View Game History</Link>
+          
         </div>
       ) : (
         <p className="current-player-text">Current Player: {currentPlayer}</p>
