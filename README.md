@@ -1,53 +1,53 @@
 # My Connect Four Game
 
-## Proje Tanımı
+## Project Description
 
-Bu proje, "Connect Four" adlı bir masa oyununu dijital bir formatta simüle eden bir web uygulamasını içermektedir. Oyunun kullanıcı arayüzü, üç ana sayfadan oluşmaktadır: Game Creation Screen, Game Screen ve List of Games Screen.
+This project simulates the board game "Connect Four" in a digital format through a web application. The user interface of the game consists of three main pages: Game Creation Screen, Game Screen, and List of Games Screen.
 
 ## 1. Game Creation Screen
 
-Bu sayfa, oyuncuların oyun başlamadan önce gerekli bilgileri girdiği bir başlangıç noktasıdır. Aşağıdaki özelliklere sahiptir:
+This page serves as the starting point where players input necessary information before the game starts. It includes the following features:
 
-- **Game Name:** Oyunun adını belirler.
-- **Player Names:** İki oyuncunun isimlerini girer.
-- **Player Disk Colors:** Her oyuncunun disk rengini seçer.
-- **Background Color:** Oyun arka planının rengini belirler.
-- **Start Game Button:** Oyuncuların girdiği bilgileri kontrol eder ve eksik bilgi varsa uyarı verir. Tüm bilgiler doğru girildiyse, Game Screen'e geçiş yapar.
+- **Game Name:** Sets the name of the game.
+- **Player Names:** Allows players to enter their names.
+- **Player Disk Colors:** Lets each player choose their disk color.
+- **Background Color:** Determines the background color of the game.
+- **Start Game Button:** Validates the entered information, providing a warning if any information is missing. If all information is correct, it transitions to the Game Screen.
 
 ## 2. Game Screen
 
-Oyunun gerçekleştiği ana ekran. İşte bu ekranın özellikleri:
+The main screen where the game takes place. Here are the features of this screen:
 
-- **Player Greeting:** İlk oyuncunun ismine özel bir hoş geldin mesajı.
-- **Game Grid:** Connect Four oyununun oynandığı 7x6'lık bir oyun alanı.
-- **Current Player:** Oyun sırasında hangi oyuncunun disk attığını gösterir.
-- **Game History Button:** Oyun bilgilerini kaydeden ve List of Games Screen'e geçişi sağlayan bir buton.
-- **Leave Game Button:** Oyundan çıkış yaparak Game Creation Screen'e dönüş sağlar.
+- **Player Greeting:** Displays a personalized welcome message for the first player's name.
+- **Game Grid:** Represents the 7x6 game grid for Connect Four.
+- **Current Player:** Indicates which player is currently making a move.
+- **Game History Button:** Saves game information and transitions to the List of Games Screen.
+- **Leave Game Button:** Allows exiting the game and returning to the Game Creation Screen.
 
-### Oyun Akışı
+### Game Flow
 
-- Oyun, kullanıcı tarafından interaktif bir deneyim sunar.
-- Oyuncu ilk diski attıktan sonra, bilgisayar 1 saniye içinde hamle yapar.
-- Eğer bir saniye içinde iki kez tıklarsanız, bilgisayar peş peşe hamle yapar.
-- Oyun beraber bittiğinde otomatik olarak yeni bir oyun başlar.
+- The game provides an interactive experience for the user.
+- After the player drops the first disc, the computer makes a move within 1 second.
+- If you click twice within one second, the computer makes consecutive moves.
+- When the game ends in a tie, a new game starts automatically.
 
 ## 3. List of Games Screen
 
-Bu sayfa, oyun skorlarının görüntülendiği bir ekran. Özellikleri:
+This page displays a table of game scores. It includes the following features:
 
-- **Game Score Table:** Son 10 oyunun adını, oyuncu isimlerini, ve kazanan bilgilerini içeren bir tablo.
-- **GameCreationScreen Button:** Game Creation Screen'e dönüş sağlayan bir buton.
+- **Game Score Table:** Shows the names, player names, and winner information for the last 10 games.
+- **GameCreationScreen Button:** Allows returning to the Game Creation Screen.
 
-### Skor Tablosu Güncelleme
+### Updating the Score Table
 
-- Aynı oyun ismiyle girildiğinde ve listede kayıtlıysa, sadece kazanan ve oyuncu ismi güncellenir.
-- Aynı oyun birden fazla listede gösterilmez.
+- If the same game name is entered and already listed, only the winner and player name are updated.
+- The same game is not listed multiple times.
 
-## Nasıl Kullanılır
+## How to Use
 
-1. Game Creation Screen'de oyuncu ismini, oyun adını belirtin.
-2. Oyuncuların disk renklerini ve arka plan rengini seçin.
-3. Oyun ekranında ilk diski atın ve bilgisayarın hamlesini bekleyin.
-4. Oyunu beraber bitireniz otomatik olarak yeniden başlar.
-5. Eğer önceki ve şimdiki oyun listesini görmek istiyorsanız, Game History kısmından inceleyebilirsiniz.
-6. Oyundan çıkmak veya oyun bilgilerini değiştirmek istiyorsanız, Leave Game butonuna basabilirsiniz.
+1. Specify the player name and game name on the Game Creation Screen.
+2. Choose the disk colors and background color for the players.
+3. Drop the first disc on the game screen and wait for the computer's move.
+4. If the game ends in a tie, it automatically starts a new game.
+5. To view the previous and current game lists, check the Game History section.
+6. If you want to exit the game or change game information, click the Leave Game button.
