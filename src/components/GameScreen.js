@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import '../css/GameScreen.css'; // CSS dosyasını dahil et
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate} from 'react-router-dom';
 
 const createEmptyBoard = () => {
   const board = Array.from({ length: 6 }, () => Array(7).fill(null));
   return board;
 };
 
-const GameScreen = ({ onLeaveGame }) => {
+const GameScreen = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const playerName = localStorage.getItem('playerName');
   const gameName = localStorage.getItem('gameName');
@@ -179,6 +180,11 @@ const GameScreen = ({ onLeaveGame }) => {
 
     gameInfoArray.push(gameInfo);
     localStorage.setItem('gameInfoArray', JSON.stringify(gameInfoArray));
+  };
+
+  const onLeaveGame = () => {
+    saveGameInfo();
+    navigate('/'); // useNavigate hook'u ile yönlendirme
   };
 
   return (
