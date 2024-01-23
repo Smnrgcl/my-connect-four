@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+My Connect Four Game
+About the Project
+This project is a web application that allows players to play the "Connect Four" strategy game, where two players take turns dropping their colored discs into a vertically suspended grid with the objective of connecting four of their own discs consecutively, either horizontally, vertically, or diagonally.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Structure
+The project was developed using Visual Studio Code. Below is a structural description of the project files:
 
-## Available Scripts
+src
+components
+GameCreationScreen.js: Screen where players enter game information and start the game.
+GameScreen.js: Main screen where the actual game takes place.
+ListOfGamesScreen.js: Screen displaying game scores.
+css
+GameScreen.css: Style file for the game screen.
+App.js: Main application file.
+Game Flow
+Game Creation Screen:
 
-In the project directory, you can run:
+Players enter information such as name, game name, disc colors, and background color.
+If the player name is not entered, the game does not start.
+Clicking the "Start Game" button redirects to the game screen.
+Game Screen:
 
-### `npm start`
+Player-entered information is applied here.
+A welcome message for the named player is displayed at the top.
+Clicking the "Game History" button redirects to the List of Games Screen where game information is saved.
+Below the game area, the name of the current player and the name of the last winner are displayed.
+If the game ends in a draw, a new game starts automatically.
+Clicking the "Leave Game" button redirects to the Game Creation Screen.
+List of Games Screen:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A table displaying game scores is shown.
+The table records game name, player name, and winner information.
+Multiple records with the same game name are not allowed.
+Clicking the "Game Creation Screen" button redirects to the Game Creation Screen.
+How to Use
+In the Game Creation Screen, specify the player's name, game name, disc colors, and background color.
+Start the game by clicking the "Start Game" button.
+In the Game Screen, drop the first disc and wait for the computer's move.
+If the game ends in a draw, a new game starts automatically.
+Use the "Game History" button to view previous games.
+Click the "Leave Game" button to exit the game or change information.
