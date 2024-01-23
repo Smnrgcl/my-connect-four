@@ -11,22 +11,22 @@ const GameCreationScreen = ({ onStartGame }) => {
   const navigate = useNavigate();
 
   const handleStartGame = () => {
-     // Oyuncu ismi boşsa, geçiş yapma
-     if (!playerName) {
+    // Oyuncu ismi boşsa, geçiş yapma
+    if (!playerName) {
       alert('Please enter your player name.');
       return;
-    }// Oyun başlatıldığında, yönlendirme işlemini gerçekleştir
+    }
+    
+    // Oyun başlatıldığında, yönlendirme işlemini gerçekleştir
     onStartGame(playerName, player1Color, player2Color, backgroundColor, gameName);
-     navigate('/game', { playerName, player1Color, player2Color, backgroundColor, gameName });
+    navigate('/game', { playerName, player1Color, player2Color, backgroundColor, gameName });
+
     // Local storage'e değerleri kaydet
     localStorage.setItem('playerName', playerName);
     localStorage.setItem('player1Color', player1Color);
     localStorage.setItem('player2Color', player2Color);
     localStorage.setItem('gameName', gameName);
     localStorage.setItem('backgroundColor', backgroundColor);
-
-    // Örneğin, '/game' sayfasına yönlendir
-    navigate('/game', { playerName, player1Color, player2Color,backgroundColor,gameName });
   };
 
   useEffect(() => {
@@ -44,8 +44,16 @@ const GameCreationScreen = ({ onStartGame }) => {
     if (storedBackgroundColor) setBackgroundColor(storedBackgroundColor);
   }, []);
 
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh', // Ekranın yüksekliği kadar genişlik
+  };
+
   return (
-    <div>
+    <div style={containerStyle}>
       <h2>Game Creation Screen</h2>
       <label>
         Game Name:
