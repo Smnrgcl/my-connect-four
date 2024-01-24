@@ -5,7 +5,8 @@
 
 This project is a digital implementation of the classic board game "Connect Four," designed as a web application. The game offers an interactive and engaging experience for players through three main screens: Game Creation Screen, Game Screen, and List of Games Screen.
 
-# App.js
+
+# 1. App.js
 
 This file contains the main component of your React application and defines the page routing using the `react-router-dom` library to navigate between different screens.
 
@@ -32,15 +33,13 @@ This file contains the main component of your React application and defines the 
    - Component: `ListOfGamesScreen`
    - Contains a list displaying the history of played games.
 
-## Game Control Functions
+
 
 - **startGameHandler(playerName, player1Color, player2Color)**: This function initiates the game. It takes values from the `GameCreationScreen` component and performs necessary actions to start the game.
 
 - **leaveGameHandler()**: This function handles leaving the game. It responds to requests from the `GameScreen` component and performs actions to leave the game.
 
-# Game Creation Screen
-
-This component represents a screen where the user can input parameters to create a game. It allows the user to enter parameters such as player name, disk colors, game name, and background color. When the game is created, the user is redirected to the game screen with the specified parameters.
+# 2.Game Creation Screen
 
 ## General Information
 
@@ -51,9 +50,9 @@ This component represents a screen where the user can input parameters to create
 - **Color Selections**: Users can determine features such as player disk colors and background color through color selection boxes.
 
 - **Game Start Process**: Clicking the "Start Game" button triggers a redirection to the main game screen with the necessary parameters through the `onStartGame` prop.
-# Connect Four Game Screen
 
-This project includes a Connect Four game developed using React. The GameScreen component serves as the main interface for users to play the game, view past games, and exit the current game.
+
+## 3.Game Screen
 
 ## General Information
 
@@ -82,9 +81,6 @@ This project includes a Connect Four game developed using React. The GameScreen 
 - **Changing Disk Colors**: The `player1Color` and `player2Color` states represent the disk colors for the user and computer, respectively. Users can choose these colors, and the preferences are stored in localStorage.
 
 
-
-## Game Screen
-
 - **Game Board**: A game board consisting of 6 rows and 7 columns. Users can drop disks into columns by clicking on them.
 - **Player Information**: The current player's name is displayed on the game screen.
 - **Winner Information**: When the game ends, information about the winner or a draw is displayed on the screen.
@@ -92,9 +88,7 @@ This project includes a Connect Four game developed using React. The GameScreen 
 - **Leave Game Button**: Click the "Leave Game" button to exit the current game and return to the main screen.
 
 
-# List Of Games Screen
-
-This component is used to display a table containing scores of past games. The table includes information such as game name, player name, and winner details, showing the last 10 games. Additionally, it features a button to navigate back to the GameCreationScreen page.
+# 4.List Of Games Screen
 
 ## General Information
 
