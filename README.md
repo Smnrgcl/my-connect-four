@@ -1,10 +1,6 @@
 # My Connect Four Game
 
 ## Project Code Description
-<h2>
-<details>
-
-</details></h2>
 
 ## App.js
 ![Game Create Screen](./public/images/projeseması.png)
