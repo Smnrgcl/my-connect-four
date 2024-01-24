@@ -1,9 +1,14 @@
 # My Connect Four Game
 
 ## Project Code Description
-![Game Create Screen](./public/images/projeseması.png)
+<h2>
+<details>
+
+</details></h2>
 
 ## App.js
+![Game Create Screen](./public/images/projeseması.png)
+
 
 - **Routing**: Utilizes `react-router-dom` for page navigation.
 - **Routes**:
@@ -32,7 +37,6 @@
 
 ## List Of Games Screen
 
-- **Hooks**: Uses `useNavigate` for page navigation.
 - **localStorage**: Retrieves game info from localStorage.
 - **Updating Score Table**: Updates winners for each game.
 - **Last 10 Games**: Displays the last 10 games.
