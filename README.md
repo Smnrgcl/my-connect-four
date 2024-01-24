@@ -1,109 +1,45 @@
 # My Connect Four Game
 
+## Project Code Description
+
+## App.js
+
+- **Routing**: Utilizes `react-router-dom` for page navigation.
+- **Routes**:
+  1. **Game Creation Screen (`/`)**: `GameCreationScreen` component with `startGameHandler`.
+  2. **Game Screen (`/game`)**: `GameScreen` component with `leaveGameHandler`.
+  3. **List Of Games Screen (`/history`)**: `ListOfGamesScreen` component.
+
+## Game Creation Screen
+
+- **Hooks**: Uses `useState` and `useEffect`.
+- **localStorage**: Stores user values for persistence.
+- **Color Selections**: Allows users to choose player disk colors and background.
+- **Start Game**: Clicking "Start Game" redirects to the main game screen.
+
+## Game Screen
+
+- **Hooks**: Uses `useState` and `useEffect`.
+- **Game Board**: 6x7 grid for gameplay.
+- **Game Status Checking**: Checks for winners and draws.
+- **Computer Moves**: `makeRandomMove` simulates computer decisions.
+- **Updating Board**: `dropDisk` processes user or computer moves.
+- **Resetting Game**: `resetGame` starts a new round.
+- **Saving Game Info**: Records winner info in localStorage.
+- **Page Navigation**: `useNavigate` redirects on leaving the game.
+- **Color and Theme Settings**: Adapts colors based on user preferences.
+
+## List Of Games Screen
+
+- **Hooks**: Uses `useNavigate` for page navigation.
+- **localStorage**: Retrieves game info from localStorage.
+- **Updating Score Table**: Updates winners for each game.
+- **Last 10 Games**: Displays the last 10 games.
+- **Table Rendering**: Uses `table` element for score display.
 
 ## Project Description
 
 This project is a digital implementation of the classic board game "Connect Four," designed as a web application. The game offers an interactive and engaging experience for players through three main screens: Game Creation Screen, Game Screen, and List of Games Screen.
-
-
-# 1. App.js
-
-This file contains the main component of your React application and defines the page routing using the `react-router-dom` library to navigate between different screens.
-
-## General Information
-
-- **Router Usage**: The `BrowserRouter` component creates a `Router` that encompasses the entire application, enabling page navigation.
-
-- **Defining Routes**: Inside the `Routes` component, `Route` components are defined for different paths. Each `Route` includes a specific URL path and the corresponding component.
-
-## Page Routing
-
-1. **Game Creation Screen (`/`)**:
-   - Path: `/`
-   - Component: `GameCreationScreen`
-   - Controls the game started with the `onStartGame` prop, invoking the `startGameHandler` function.
-
-2. **Game Screen (`/game`)**:
-   - Path: `/game`
-   - Component: `GameScreen`
-   - Controls the leave game actions through the `onLeaveGame` prop, invoking the `leaveGameHandler` function.
-
-3. **List Of Games Screen (`/history`)**:
-   - Path: `/history`
-   - Component: `ListOfGamesScreen`
-   - Contains a list displaying the history of played games.
-
-
-
-- **startGameHandler(playerName, player1Color, player2Color)**: This function initiates the game. It takes values from the `GameCreationScreen` component and performs necessary actions to start the game.
-
-- **leaveGameHandler()**: This function handles leaving the game. It responds to requests from the `GameScreen` component and performs actions to leave the game.
-
-# 2.Game Creation Screen
-
-## General Information
-
-- **React Hooks**: This component uses React Hooks such as `useState` and `useEffect` to manage the component's state and respond to lifecycle events.
-
-- **localStorage Usage**: User-entered values are stored in localStorage, preserving these values when the page is refreshed or closed.
-
-- **Color Selections**: Users can determine features such as player disk colors and background color through color selection boxes.
-
-- **Game Start Process**: Clicking the "Start Game" button triggers a redirection to the main game screen with the necessary parameters through the `onStartGame` prop.
-
-
-## 3.Game Screen
-
-## General Information
-
-- **React Hooks**: This project utilizes React Hooks such as `useState` and `useEffect` to manage the component's state and respond to lifecycle events.
-
-- **Creating the Game Board**: The `createEmptyBoard` function generates an initially empty game board. The board consists of 6 rows and 7 columns.
-
-- **Game Status Checking**: The `checkGameStatus` function examines the state of the game board. It performs winner checks in vertical, horizontal, and diagonal directions. Additionally, it checks if the game ends in a draw.
-
-- **Making Computer Moves**: The `makeRandomMove` function allows the computer to drop a disk into a random column. This is used to simulate the computer's decision-making in the game.
-
-- **Updating the Game Board**: The `dropDisk` function processes the user's or computer's move of dropping a disk into a column. Board updates and turn changes occur within this function.
-
-- **Resetting the Game**: The `resetGame` function resets the game, starting a new round.
-
-- **Saving Game Information**: The `saveGameInfo` function records winner information in local storage, creating a game history.
-
-- **Page Navigation**: Utilizing the `useNavigate` hook, the `onLeaveGame` function redirects to the main page when the user leaves the game.
-
-## Color and Theme Settings
-
-- **Color Settings**: User-preferred colors are retrieved from localStorage, adjusting the game board, disk colors, and background color accordingly.
-
-- **Changing Background Color**: The `backgroundColor` state holds the background color of the game board, matching the user's preferred color.
-
-- **Changing Disk Colors**: The `player1Color` and `player2Color` states represent the disk colors for the user and computer, respectively. Users can choose these colors, and the preferences are stored in localStorage.
-
-
-- **Game Board**: A game board consisting of 6 rows and 7 columns. Users can drop disks into columns by clicking on them.
-- **Player Information**: The current player's name is displayed on the game screen.
-- **Winner Information**: When the game ends, information about the winner or a draw is displayed on the screen.
-- **Game History Link**: Use the "Game History" link to navigate to another page.
-- **Leave Game Button**: Click the "Leave Game" button to exit the current game and return to the main screen.
-
-
-# 4.List Of Games Screen
-
-## General Information
-
-- **React Hooks**: This component utilizes the `useNavigate` hook for page navigation.
-
-- **Local Storage Usage**: Game information is processed by retrieving it from localStorage. Past game details are stored in an array named `gameInfoArray`.
-
-- **Updating Score Table**: Game information is processed by updating the last winners of games with the same name. The latest winners, appearing only once for each game name, are added to the `updatedGameInfoArray` array.
-
-- **Displaying Last 10 Games**: The `son10Oyunlar` array is created from updated game information and contains the last 10 games.
-
-- **Helper Function**: The `getLastWinner` function is a helper function that finds the last winner for a given game name.
-
-- **Table Rendering**: The score table is displayed using the `table` element with a header (`thead`) and rows (`tbody`).
-
 
 
 
