@@ -6,6 +6,18 @@
 
 ![Game Create Screen](./public/images/projeolus.png)
 
+![Game Create Screen](./public/images/projeolus2.png)
+
+![Game Create Screen](./public/images/projeolus3.png)
+
+![Game Create Screen](./public/images/sayfaetkilesim.png)
+
+![Game Create Screen](./public/images/sayfaetkilesim2.png)
+
+![Game Create Screen](./public/images/background.png)
+
+![Game Create Screen](./public/images/listesayfasınıncss.png)
+
 </h2>
 </details>
 
