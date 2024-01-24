@@ -61,6 +61,9 @@
 
 This project is a digital implementation of the classic board game "Connect Four," designed as a web application. The game offers an interactive and engaging experience for players through three main screens: Game Creation Screen, Game Screen, and List of Games Screen.
 
+
+ You can get information about the Connect Four game from this link.
+
 https://en.wikipedia.org/wiki/Connect_Four
 
 
