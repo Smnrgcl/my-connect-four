@@ -4,7 +4,7 @@
 <details> 
 <h2>
 
-![Game Create Screen](./public/images/projeolus.pngpng)
+![Game Create Screen](./public/images/projeolus.png)
 
 </h2>
 </details>
