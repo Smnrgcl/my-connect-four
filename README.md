@@ -11,9 +11,9 @@ To set up the project on your local machine, follow the steps below:
 1. Download the project files to your computer.
 2. Navigate to the project directory in your terminal or command prompt.
 
-  '''bash
+  ```bash
   cd my-connect-four
-  '''
+  ```
 
 3. Use the following command to install the necessary dependencies:
 
