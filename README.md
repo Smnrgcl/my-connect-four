@@ -32,6 +32,7 @@ After following these steps, your application should be up and running
 
 ### 1. Game Creation Screen
 ![Game Create Screen](./public/images/GameCreateScreen.png)
+
 This screen serves as the starting point where players input essential information before starting the game. Key features include:
 
 - **Game Name:** Set the name of the game.
@@ -42,6 +43,7 @@ This screen serves as the starting point where players input essential informati
 
 ### 2. Game Screen
 ![Game Screen](./public/images/GameScreen.png)
+
 The main gameplay screen with the following features:
 
 - **Player Greeting:** Displays a personalized welcome message for the first player's name.
@@ -60,6 +62,7 @@ The game provides an interactive experience for the user.
 
 ### 3. List of Games Screen
 ![Game Screen](./public/images/GameListScreen.png)
+
 This screen displays a table of game scores with the following features:
 
 - **Game Score Table:** Shows the names, player names, and winner information for the last 10 games.
