@@ -16,7 +16,8 @@
 
 ![Game Create Screen](./public/images/background.png)
 
-![Game Create Screen](./public/images/listedayfasınıncss.png)
+![Game Create Screen](./public/images/listed
+sayfasınıncss.png)
 
 </h2>
 </details>
